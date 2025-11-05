@@ -6,7 +6,6 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
-    '@alexcolls/nuxt-ux',
   ],
   
   ssr: false, // SPA mode
@@ -50,14 +49,17 @@ export default defineNuxtConfig({
   vite: {
     define: {
       global: 'globalThis',
+      'process.env': {},
     },
     resolve: {
       alias: {
         buffer: 'buffer/',
+        stream: 'stream-browserify',
+        util: 'util/',
       },
     },
     optimizeDeps: {
-      include: ['buffer'],
+      include: ['buffer', '@solana/web3.js', '@solana/spl-token'],
       esbuildOptions: {
         define: {
           global: 'globalThis',
