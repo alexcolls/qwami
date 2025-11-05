@@ -12,6 +12,8 @@ export default defineNuxtConfig({
 
   devtools: { enabled: true },
 
+  css: ['~/assets/css/main.css'],
+
   app: {
     head: {
       title: 'QWAMI Token - Mint & Burn',

@@ -1,6 +1,6 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900/20 to-blue-900/20 flex items-center justify-center p-4">
-    <div class="w-full max-w-3xl">
+  <div class="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900/20 to-blue-900/20 py-8 px-4">
+    <div class="w-full max-w-3xl mx-auto">
       <!-- Main Glass Window -->
       <ClientOnly>
         <QwamiGlassWindow />
