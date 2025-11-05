@@ -1,12 +1,4 @@
 import { defineStore } from 'pinia';
-import { Connection, PublicKey } from '@solana/web3.js';
-import { getAssociatedTokenAddress, getAccount } from '@solana/spl-token';
-import { Buffer } from 'buffer';
-
-// Polyfill for browser
-if (typeof window !== 'undefined') {
-  window.Buffer = window.Buffer || Buffer;
-}
 
 interface WalletState {
   isConnected: boolean;
@@ -123,7 +115,9 @@ export const useWalletStore = defineStore('wallet', {
      */
     async refreshBalances() {
       if (!this.isConnected || !this.publicKey) return;
+      if (typeof window === 'undefined') return; // Server-side guard
 
+      const { Connection, PublicKey } = await import('@solana/web3.js');
       const config = useRuntimeConfig();
       const connection = new Connection(config.public.rpcUrl as string);
 
@@ -145,7 +139,12 @@ export const useWalletStore = defineStore('wallet', {
     /**
      * Fetch QWAMI token balance
      */
-    async fetchQwamiBalance(connection: Connection, config: any) {
+    async fetchQwamiBalance(connection: any, config: any) {
+      if (typeof window === 'undefined') return; // Server-side guard
+      
+      const { PublicKey } = await import('@solana/web3.js');
+      const { getAssociatedTokenAddress, getAccount } = await import('@solana/spl-token');
+      
       const qwamiMint = config.public.qwamiTokenMint as string;
 
       if (!qwamiMint) {
