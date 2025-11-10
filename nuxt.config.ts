@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
+    '@alexcolls/nuxt-ux',
   ],
   
   ssr: false, // SPA mode
