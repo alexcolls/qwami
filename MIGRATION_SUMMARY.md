@@ -207,7 +207,7 @@ dist/assets/index-mmAn1xOm.js    6.59 kB │ gzip: 2.52 kB
 
 ### Development
 ```bash
-npm run dev          # Start dev server (http://localhost:3000)
+npm run dev          # Start dev server (http://localhost:3001)
 ```
 
 ### Build
@@ -308,9 +308,10 @@ All documentation updated:
 - [x] Responsive mobile design
 - [x] Smooth animations
 - [x] Build optimized (< 25KB gzipped)
+- [x] Animated 3D blob visualization with Three.js ✨
 
 ### Future Enhancements 🚀
-- [ ] Add live KWAMI blob (Three.js)
+- [x] Add live KWAMI blob (Three.js) ✅ **COMPLETED**
 - [ ] Integrate Web Audio API
 - [ ] Add background videos
 - [ ] Interactive demos

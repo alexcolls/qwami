@@ -48,7 +48,7 @@ npm install  # or bun install
 npm run dev  # or bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000)
+Open [http://localhost:3001](http://localhost:3001)
 
 ### Build for Production
 
@@ -117,7 +117,7 @@ qwami/
 
 ### Visual Style
 
-- **Animated blob visualization** (inspired by kwami.io)
+- **Animated 3D blob visualization** (Three.js, inspired by kwami.io) ✅
 - **Smooth scroll transitions** between sections
 - **Dynamic color palettes** per section
 - **Interactive sidebar navigation** with spheres
