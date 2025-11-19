@@ -1,4 +1,4 @@
-# 🌕 QWAMI Token Specification
+# ☀️ QWAMI Token Specification
 
 **Version**: 1.0.0  
 **Network**: Solana  

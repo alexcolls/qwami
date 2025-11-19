@@ -14,7 +14,7 @@ Complete transformation from Nuxt-based mint/burn interface to Vite-based inform
 ### Added
 
 #### Core Features
-- 🌕 **14 Informative Sections** covering all aspects of QWAMI token
+- ☀️ **16 Informative Sections** covering all aspects of QWAMI token
   - Introduction and overview
   - Energy, Connections, and Metamorphosis explanations
   - Tokenomics and supply information

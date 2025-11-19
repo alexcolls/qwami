@@ -194,4 +194,4 @@ Questions? Check the inline comments - they're comprehensive.
 
 ---
 
-**Happy minting! 🌕**
+**Happy minting! ☀️**

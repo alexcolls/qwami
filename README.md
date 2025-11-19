@@ -1,4 +1,4 @@
-# 🌕 QWAMI Token - Informative Landing Page
+# ☀️ QWAMI Token - Informative Landing Page
 
 Interactive scrolling website for the QWAMI token - the native utility token that powers KWAMI AI companions.
 
@@ -26,7 +26,7 @@ QWAMI is the native KWAMI ecosystem token that powers AI companions and distribu
 
 ## 🏗️ Tech Stack
 
-- **Framework**: Vite + TypeScript
+- **Framework**: Nuxt 3 (SPA mode)
 - **Styling**: Custom CSS with animations
 - **Network**: Solana blockchain
 - **Inspiration**: kwami.io landing page style
@@ -67,24 +67,31 @@ npm run preview  # or bun preview
 
 ```
 qwami/
-├── index.html              # Main HTML entry point
-├── vite.config.ts          # Vite configuration
-├── tsconfig.json           # TypeScript configuration
-├── package.json            # Dependencies and scripts
+├── app/                    # Application code (Nuxt 4 structure)
+│   ├── app.vue            # Root application component
+│   ├── pages/
+│   │   └── index.vue      # Main landing page
+│   └── assets/
+│       ├── css/
+│       │   └── main.css   # Global styles and animations
+│       └── js/
+│           └── main.ts    # Client-side TypeScript logic
 │
-├── src/
-│   ├── main.ts            # Main TypeScript logic
-│   └── style.css          # Global styles and animations
+├── server/                 # Server-side code (API routes)
+│   └── api/               # Future API endpoints
 │
-├── public/                # Static assets
-│   └── loader/           # Loading assets
+├── public/                 # Static assets
+│   └── favicon.svg
 │
-├── assets/               # Legacy assets (Nuxt)
-│   └── css/
+├── nuxt.config.ts         # Nuxt configuration
+├── tsconfig.json          # TypeScript configuration
+├── package.json           # Dependencies and scripts
 │
-└── docs/                 # Documentation
+└── docs/                  # Documentation
     ├── README.md
-    └── QWAMI_TOKEN.md    # Token specifications
+    ├── QWAMI_TOKEN.md     # Token specifications
+    ├── DEPLOYMENT.md      # Deployment guide
+    └── CHANGELOG.md       # Version history
 ```
 
 ## 🎨 Features
@@ -156,10 +163,10 @@ For detailed information about:
 
 ### File Descriptions
 
-- **index.html** - Main HTML with 14 informative sections
-- **src/main.ts** - Scroll management, navigation, color transitions
-- **src/style.css** - Responsive styles, animations, visual effects
-- **vite.config.ts** - Build configuration
+- **app/pages/index.vue** - Main landing page with 16 informative sections
+- **app/assets/js/main.ts** - Scroll management, navigation, color transitions
+- **app/assets/css/main.css** - Responsive styles, animations, visual effects
+- **nuxt.config.ts** - Nuxt configuration (SPA mode)
 
 ### Key Classes
 

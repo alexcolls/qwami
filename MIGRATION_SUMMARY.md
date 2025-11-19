@@ -1,4 +1,4 @@
-# 🌕 QWAMI Project Migration Summary
+# ☀️ QWAMI Project Migration Summary
 
 ## Overview
 
@@ -73,7 +73,7 @@ Before:                          After:
 
 ### 14 Informative Sections
 
-0. **Introduction** (🌕) - QWAMI Token overview
+0. **Introduction** (☀️) - QWAMI Token overview
 1. **What is QWAMI** (💫) - Core concept and utility
 2. **Energy** (⚡) - AI API fuel and DAO voting
 3. **Connections** (🔗) - App integration expansion

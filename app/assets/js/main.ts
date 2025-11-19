@@ -1,6 +1,5 @@
-import './style.css';
-
-console.log('🌕 QWAMI Token - Initializing...');
+// QWAMI Token - Main client-side logic
+console.log('☀️ QWAMI Token - Initializing...');
 
 // Tailwind -500 colors for color palettes (16 sections)
 const tailwindColors500 = [
@@ -362,18 +361,24 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// Console message
-console.log(`
-  🌕 QWAMI Token - Fuel Your KWAMI & Earn Weekly Dividends
+// Initialize function
+export default function initQwami() {
+  // Console message
+  console.log(`
+    ☀️ QWAMI Token - Fuel Your KWAMI & Earn Weekly Dividends
+    
+    💰 Dividends: 80% of profits every Friday
+    🔒 Staking: Earn APY + Dividends
+    ⚡ Energy | 🔗 Connections | 🦋 Metamorphosis
+    
+    1 QWAMI = $0.01 USD | Max Supply: 1 Trillion
+    Decimals: 0 (Integer) | Network: Solana SPL
+    
+    Revenue: market.kwami.io + candy.kwami.io
+    Learn more at qwami.io
+  `);
   
-  💰 Dividends: 80% of profits every Friday
-  🔒 Staking: Earn APY + Dividends
-  ⚡ Energy | 🔗 Connections | 🦋 Metamorphosis
-  
-  1 QWAMI = $0.01 USD | Max Supply: 1 Trillion
-  Decimals: 0 (Integer) | Network: Solana SPL
-  
-  Revenue: market.kwami.io + candy.kwami.io
-  Learn more at qwami.io
-`);
+  // Return initialization status
+  return true;
+}
 

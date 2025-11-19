@@ -1,5 +1,6 @@
 # Nuxt dev/build outputs
 .output
+.data
 .nuxt
 .nitro
 .cache
@@ -12,12 +13,12 @@ node_modules
 logs
 *.log
 npm-debug.log*
+pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
-.pnpm-debug.log*
 
-# OS
+# Misc
 .DS_Store
 .fleet
 .idea
@@ -25,17 +26,7 @@ lerna-debug.log*
 # Local env files
 .env
 .env.*
-!.env.sample
+!.env.example
 
-# IDE
-.vscode/*
-!.vscode/extensions.json
-.idea
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-
-# Contracts/IDL (symlinks or copies)
-contracts/idl/*.json
+# TypeScript
+*.tsbuildinfo
