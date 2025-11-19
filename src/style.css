@@ -1,0 +1,597 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --section-count: 14;
+  --color-primary: #8B5CF6;  /* Purple */
+  --color-secondary: #EC4899; /* Pink */
+  --color-accent: #F59E0B;    /* Amber */
+  --text-color: #ffffff;
+  --bg-dark: #0a0a0a;
+  --transition-speed: 0.3s;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background: var(--bg-dark);
+  color: var(--text-color);
+  overflow-x: hidden;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(10, 10, 10, 0.8);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    var(--color-primary),
+    var(--color-secondary)
+  );
+  border-radius: 6px;
+  transition: background 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    var(--color-secondary),
+    var(--color-primary)
+  );
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) rgba(10, 10, 10, 0.8);
+}
+
+#app {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Left half - Text content */
+.content-left {
+  position: relative;
+  width: 50%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  z-index: 10;
+  height: calc(var(--section-count, 14) * 100vh);
+}
+
+.text-section {
+  position: sticky;
+  top: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.4s ease, 
+              transform 0.4s ease;
+  will-change: transform, opacity;
+}
+
+.text-section.active {
+  opacity: 1;
+  transform: translateY(0);
+  animation: slide-up 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Section numbers */
+.section-number {
+  font-size: clamp(6rem, 15vw, 12rem);
+  font-weight: 700;
+  line-height: 0.9;
+  opacity: 0.2;
+  margin-bottom: 0rem;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-secondary)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.05em;
+  user-select: none;
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Courier New', monospace;
+  text-transform: uppercase;
+  font-feature-settings: 'tnum' 1, 'zero' 1;
+  transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section-hash {
+  font-size: 0.6em;
+  opacity: 1;
+  -webkit-text-fill-color: initial;
+  color: var(--color-primary);
+}
+
+.text-section h1,
+.text-section h2 {
+  font-size: clamp(2rem, 3vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 2.5rem;
+  line-height: 1.2;
+  font-family: 'Orbitron', 'Rajdhani', 'Courier New', monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-shadow: 
+    0 0 10px rgba(255, 255, 255, 0.5),
+    0 0 20px rgba(255, 255, 255, 0.3),
+    0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+/* Emoji keeps original colors */
+.text-section h1 .emoji,
+.text-section h2 .emoji {
+  display: inline-block;
+}
+
+/* Apply gradient to text only */
+.text-section h1 .gradient-text,
+.text-section h2 .gradient-text {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-secondary)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 3s ease infinite;
+  background-size: 200% 200%;
+  transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.text-section p {
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  margin-bottom: 1.5rem;
+  color: rgba(255, 255, 255, 0.8);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fade-slide-in 0.6s ease forwards;
+}
+
+.text-section p.main-description {
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+
+.animate-text {
+  animation: fade-slide-in 0.8s ease forwards;
+}
+
+.animate-text.delay-1 {
+  animation-delay: 0.2s;
+}
+
+.animate-text.delay-2 {
+  animation-delay: 0.4s;
+}
+
+.animate-text.delay-3 {
+  animation-delay: 0.6s;
+}
+
+@keyframes fade-slide-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-action {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.action-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.4rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(10, 10, 10, 0.35);
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  text-transform: none;
+}
+
+.action-button:hover,
+.action-button:focus-visible {
+  border-color: var(--color-primary);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), 0 0 18px rgba(139, 92, 246, 0.35);
+}
+
+.action-button:focus-visible {
+  outline: none;
+}
+
+/* Right half - Kwami visualization */
+.content-right {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+  background: var(--bg-dark);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Right Header */
+.right-header {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 30000;
+  pointer-events: auto;
+}
+
+.header-btn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  background: rgba(10, 10, 10, 0.4);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  opacity: 0.7;
+}
+
+.header-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5),
+              0 0 25px var(--color-primary);
+  opacity: 1;
+}
+
+/* Candy emoji animation */
+.candy-emoji {
+  display: inline-block;
+  animation: candyRotate 22s linear infinite;
+}
+
+@keyframes candyRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#kwami-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: auto;
+}
+
+#kwami-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+}
+
+.kwami-label {
+  position: fixed;
+  top: 2rem;
+  left: 2rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  pointer-events: auto;
+  cursor: pointer;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.kwami-label:hover {
+  opacity: 0.8;
+}
+
+.kwami-logo-svg {
+  height: 32px;
+  width: auto;
+  min-width: 160px;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.kwami-label:hover .kwami-logo-svg {
+  transform: scale(1.05);
+}
+
+/* Sidebar Navigation */
+.sidebar-navigation {
+  position: fixed;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 14000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: auto;
+}
+
+.sphere-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  align-items: center;
+}
+
+.nav-sphere {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  padding: 0;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.nav-sphere:hover {
+  transform: scale(1.3);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.nav-sphere.active {
+  width: 24px;
+  height: 24px;
+  box-shadow: 0 6px 24px rgba(139, 92, 246, 0.6);
+  animation: sphere-pulse 2s ease-in-out infinite;
+}
+
+@keyframes sphere-pulse {
+  0%, 100% {
+    box-shadow: 0 6px 24px rgba(139, 92, 246, 0.6),
+                0 0 30px rgba(139, 92, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 8px 32px rgba(139, 92, 246, 0.8),
+                0 0 50px rgba(139, 92, 246, 0.5);
+  }
+}
+
+/* Custom Cursor Light */
+#cursor-light {
+  position: fixed;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle at center,
+    rgba(139, 92, 246, 0.25) 0%,
+    rgba(236, 72, 153, 0.15) 25%,
+    rgba(245, 158, 11, 0.08) 50%,
+    transparent 70%
+  );
+  transition: opacity 0.3s ease, background 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  mix-blend-mode: screen;
+  filter: blur(40px);
+  will-change: transform, opacity, background;
+}
+
+#cursor-light.active {
+  opacity: 1;
+  animation: cursor-pulse 3s ease-in-out infinite;
+}
+
+@keyframes cursor-pulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 1;
+  }
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: fixed;
+  bottom: 2rem;
+  left: 25%;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 2rem;
+  animation: bounce 2s ease-in-out infinite;
+  z-index: 10;
+  pointer-events: none;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(10px);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  #app {
+    flex-direction: column;
+  }
+
+  .content-left {
+    width: 100%;
+    height: auto;
+    min-height: calc(var(--section-count, 14) * 100vh);
+    padding: 2rem;
+    padding-bottom: 4rem;
+    z-index: 50;
+  }
+
+  .content-right {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    bottom: 0;
+    background: transparent;
+    z-index: 100;
+  }
+
+  .text-section {
+    padding: 2rem 1rem;
+    justify-content: flex-start;
+    padding-top: 8rem;
+  }
+
+  .kwami-label {
+    top: 1rem;
+    left: 1rem;
+    font-size: 1.3rem;
+  }
+  
+  .kwami-logo-svg {
+    height: 24px;
+    min-width: 120px;
+  }
+
+  .sidebar-navigation {
+    right: 0.8rem;
+  }
+
+  #cursor-light {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .text-section {
+    padding-top: 6rem;
+  }
+
+  .section-number {
+    font-size: 4rem;
+  }
+
+  .text-section h1,
+  .text-section h2 {
+    font-size: 2rem;
+  }
+
+  .text-section p {
+    font-size: 1rem;
+  }
+
+  .text-section p.main-description {
+    font-size: 1.15rem;
+  }
+
+  .action-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .sidebar-navigation {
+    right: 0.5rem;
+  }
+
+  .nav-sphere {
+    width: 10px;
+    height: 10px;
+  }
+
+  .nav-sphere.active {
+    width: 18px;
+    height: 18px;
+  }
+}
+

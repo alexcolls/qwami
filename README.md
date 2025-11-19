@@ -1,214 +1,209 @@
-# 🌕 QWAMI Token - Mint & Burn Interface
+# 🌕 QWAMI Token - Informative Landing Page
 
-Beautiful single-page app (SPA) for minting and burning QWAMI tokens on Solana.
+Interactive scrolling website for the QWAMI token - the native utility token that powers KWAMI AI companions.
 
 ## 🎯 Overview
 
-QWAMI is the utility token powering the Quami AI ecosystem. This app provides a simple, elegant interface for:
-- 💰 **Minting** tokens (public purchase via server-side authority)
-- 🔥 **Burning** tokens (client-side, owner-signed)
-- 📊 Viewing token balances (SOL & QWAMI)
-- 📚 Learning about token utility, economics, and governance
+QWAMI is the native KWAMI NFT token that enables holders to recharge and enhance their AI companion's capabilities across three core dimensions:
+
+- ⚡ **Energy** - Powers AI API calls (ElevenLabs, OpenAI) and DAO voting
+- 🔗 **Connections** - Expands app integration capacity (Instagram, WhatsApp, Gmail, etc.)
+- 🦋 **Metamorphosis** - Unlocks multiple KWAMI configurations (Mind, Soul, Body)
+
+## 📊 Tokenomics
+
+- **Price**: 1 QWAMI = $0.01 USD
+- **Max Supply**: 1,000,000,000,000 (1 Trillion)
+- **Network**: Solana
+- **Model**: Deflationary (burn-based utility)
 
 ## 🏗️ Tech Stack
 
-- **Framework**: Nuxt 4 (SPA mode, `ssr: false`)
-- **UI**: Nuxt UI + @alexcolls/nuxt-ux
-- **Blockchain**: Solana (devnet)
-- **Smart Contract**: Anchor (Rust)
-- **Wallet**: Phantom
-- **State Management**: Pinia
+- **Framework**: Vite + TypeScript
+- **Styling**: Custom CSS with animations
+- **Network**: Solana blockchain
+- **Inspiration**: kwami.io landing page style
 
 ## 🚀 Quick Start
 
 ### Prerequisites
 
-- Node.js 18+ (or Bun)
-- Phantom wallet extension
-- Solana CLI (for deployment)
-- Anchor Framework 0.30+ (for program deployment)
+- Node.js 18+ or Bun
+- Modern web browser
 
 ### Installation
 
 ```bash
 # Install dependencies
-bun install  # or npm install
-
-# Copy environment template
-cp .env.sample .env
+npm install  # or bun install
 
 # Start development server
-bun dev  # or npm run dev
+npm run dev  # or bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000)
 
-## 🔧 Configuration
-
-### Environment Variables
-
-Edit `.env` with your deployed program details:
-
-```env
-# Network
-NUXT_PUBLIC_SOLANA_NETWORK=devnet
-NUXT_PUBLIC_RPC_URL=https://api.devnet.solana.com
-
-# QWAMI Token (fill after deployment)
-NUXT_PUBLIC_QWAMI_TOKEN_MINT=<mint_address>
-NUXT_PUBLIC_QWAMI_TOKEN_PROGRAM_ID=<program_id>
-NUXT_PUBLIC_QWAMI_TOKEN_AUTHORITY=<authority_pubkey>
-NUXT_PUBLIC_QWAMI_BASE_PRICE_USD=0.01
-
-# Server-only: Authority private key (base58)
-NUXT_QWAMI_AUTHORITY_PRIVATE_KEY=<base58_private_key>
-```
-
-### Deploy the Anchor Program
-
-The qwami_token program lives in `../quami/solana/anchor/qwami-token/`.
-
-See [`contracts/idl/README.md`](./contracts/idl/README.md) for full deployment instructions.
-
-**Quick Deploy:**
+### Build for Production
 
 ```bash
-cd ../quami/solana/anchor/qwami-token
-anchor build
-anchor deploy
-# Copy Program ID to .env
-# Run initialization script
-# Copy mint/authority addresses to .env
-# Copy IDL: cp target/idl/qwami_token.json ../../qwami/contracts/idl/
+# Type check and build
+npm run build:check  # or bun run build:check
+
+# Build only
+npm run build  # or bun build
+
+# Preview production build
+npm run preview  # or bun preview
 ```
 
 ## 📁 Project Structure
 
 ```
 qwami/
-├── app.vue                     # Root app component
-├── nuxt.config.ts              # Nuxt configuration (SPA mode)
-├── package.json                # Dependencies
-├── .env.sample                 # Environment template
+├── index.html              # Main HTML entry point
+├── vite.config.ts          # Vite configuration
+├── tsconfig.json           # TypeScript configuration
+├── package.json            # Dependencies and scripts
 │
-├── pages/
-│   └── index.vue               # Main page
+├── src/
+│   ├── main.ts            # Main TypeScript logic
+│   └── style.css          # Global styles and animations
 │
-├── components/
-│   └── Qwami/
-│       ├── GlassWindow.vue     # Main UI (mint/burn tabs)
-│       └── TokenInfo.vue       # Token information accordion
+├── public/                # Static assets
+│   └── loader/           # Loading assets
 │
-├── stores/
-│   └── wallet.ts               # Pinia store (Phantom, balances)
+├── assets/               # Legacy assets (Nuxt)
+│   └── css/
 │
-├── composables/
-│   └── useAnchor.ts            # Anchor client (burn functionality)
-│
-├── server/
-│   └── api/
-│       └── qwami/
-│           ├── balance.get.ts  # Get QWAMI balance
-│           └── purchase.post.ts# Mint tokens (server-signed)
-│
-└── contracts/
-    └── idl/
-        └── README.md           # IDL setup instructions
+└── docs/                 # Documentation
+    ├── README.md
+    └── QWAMI_TOKEN.md    # Token specifications
 ```
 
 ## 🎨 Features
 
-### Wallet Connection
-- Connect/disconnect Phantom wallet
-- Display wallet address and balances
-- Auto-refresh on account changes
+### Informative Sections (14 Sections)
 
-### Minting (Purchase)
-- Input QWAMI amount
-- Calculate USD cost (base price)
-- Server-side authority minting
-- Success/error handling
-- Balance auto-refresh
+1. **Introduction** - Overview of QWAMI token
+2. **What is QWAMI** - Core concept and utility
+3. **Energy** - AI API fuel and DAO voting power
+4. **Connections** - App integration expansion
+5. **Metamorphosis** - Multiple KWAMI configurations
+6. **Tokenomics** - Supply, price, deflationary model
+7. **DAO Governance** - Community participation
+8. **How to Get QWAMI** - Purchase methods
+9. **Burning Mechanism** - Token destruction mechanics
+10. **KWAMI NFT Integration** - NFT synergy
+11. **Ecosystem** - Connected platforms
+12. **Security & Audits** - Code quality assurance
+13. **Roadmap** - Future development
+14. **Get Started** - CTA and documentation
 
-### Burning
-- Input QWAMI amount
-- Client-side owner-signed transaction
-- Permanent token destruction
-- Balance validation
+### Visual Style
 
-### Token Information
-- Utility & use cases (AI services consumption)
-- Economics & supply mechanics (deflationary model)
-- Governance (voting, proposals)
-- Disclaimers (utility token, not investment)
+- **Animated blob visualization** (inspired by kwami.io)
+- **Smooth scroll transitions** between sections
+- **Dynamic color palettes** per section
+- **Interactive sidebar navigation** with spheres
+- **Responsive design** for mobile and desktop
+- **Custom cursor light effect** (desktop only)
 
-## 🛠️ Development
+### Interactions
 
-### Run Dev Server
+- Click sidebar spheres to navigate sections
+- Scroll to progress through content
+- Action buttons for external links
+- Smooth transitions and animations
 
-```bash
-bun dev
-```
+## 🎯 Use Cases
 
-### Build for Production
+This landing page is designed to:
 
-```bash
-bun build
-```
+- Educate users about QWAMI token utility
+- Explain Energy, Connections, and Metamorphosis features
+- Drive traffic to mint/purchase interfaces
+- Showcase tokenomics and ecosystem
+- Build community engagement
 
-### Generate Static Site
+## 🌐 Ecosystem Integration
 
-```bash
-bun generate
-```
+QWAMI is part of the broader KWAMI ecosystem:
 
-### Type Check
-
-```bash
-bun nuxt typecheck
-```
-
-## 🔐 Security
-
-- **Private Keys**: Never commit `.env` with real private keys
-- **Authority Key**: Server-side only, not exposed to client
-- **Wallet Signing**: All client burns are owner-signed via Phantom
-- **Network**: Use devnet for testing, mainnet only after audits
-
-## 📝 TODOs
-
-Before going live:
-
-- [ ] Deploy qwami_token Anchor program to devnet
-- [ ] Copy IDL to `contracts/idl/qwami_token.json`
-- [ ] Complete `composables/useAnchor.ts` burn implementation
-- [ ] Complete `server/api/qwami/purchase.post.ts` mint via Anchor
-- [ ] Test full mint/burn flow on devnet
-- [ ] Add payment verification (SOL/USDC) before minting
-- [ ] Security audit before mainnet deployment
-- [ ] Set up monitoring and alerting
-- [ ] Configure production RPC endpoint
+- **kwami.io** - Core AI companion framework
+- **qwami.io** - QWAMI utility token (this site)
+- **quami.io** - Services and integrations platform
+- **candy.kwami.io** - KWAMI NFT minting
 
 ## 📚 Documentation
 
-- [QWAMI Token Overview](../quami/docs/QWAMI_TOKEN.md)
-- [Kwami NFT Minting](../quami/docs/KWAMI_NFT_MINTING.md)
-- [Solana Programs README](../quami/solana/README.md)
-- [Anchor Program Setup](../quami/solana/SETUP.md)
+For detailed information about:
+
+- **Token specifications**: See `docs/QWAMI_TOKEN.md`
+- **Smart contracts**: See `contracts/idl/README.md`
+- **KWAMI Framework**: Visit [kwami.io](https://kwami.io)
+- **GitHub**: [github.com/alexcolls/kwami](https://github.com/alexcolls/kwami)
+
+## 🛠️ Development
+
+### File Descriptions
+
+- **index.html** - Main HTML with 14 informative sections
+- **src/main.ts** - Scroll management, navigation, color transitions
+- **src/style.css** - Responsive styles, animations, visual effects
+- **vite.config.ts** - Build configuration
+
+### Key Classes
+
+- `ScrollManager` - Handles section transitions and color updates
+- `SidebarNavigator` - Manages navigation spheres
+- `CursorLight` - Custom cursor light effect
+- `ActionButtonManager` - Handles CTA button interactions
+
+### Color System
+
+Each section uses a distinct color palette from Tailwind's color spectrum:
+- Violet (primary QWAMI color)
+- Pink, Amber, Emerald, Cyan, Blue, Indigo, etc.
+
+Palettes transition smoothly as users scroll between sections.
+
+## 🎨 Design Philosophy
+
+The landing page follows kwami.io's aesthetic:
+
+1. **Informative** - Clear, concise explanations
+2. **Interactive** - Smooth animations and transitions
+3. **Modern** - Clean typography and layout
+4. **Accessible** - Responsive and mobile-friendly
+5. **On-brand** - Consistent with KWAMI ecosystem
+
+## 🔗 Links
+
+- **Live Site**: [qwami.io](https://qwami.io)
+- **GitHub**: [github.com/alexcolls/kwami](https://github.com/alexcolls/kwami)
+- **Mint KWAMI**: [candy.kwami.io](https://candy.kwami.io)
+- **Framework**: [kwami.io](https://kwami.io)
 
 ## 🤝 Contributing
 
-This is part of the Quami AI ecosystem. For the main project:
-- Repository: `../quami`
-- Solana programs: `../quami/solana/anchor/`
-- Documentation: `../quami/docs/`
+This is part of the KWAMI ecosystem. For contributions:
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
+
+See the main [KWAMI repository](https://github.com/alexcolls/kwami) for guidelines.
 
 ## 📄 License
 
-Part of the Quami project. Check main repo for license details.
+Part of the KWAMI project. Check the main repository for license details.
 
 ---
 
-**Network**: Devnet  
-**Status**: In Development  
-**Version**: 0.1.0
+**Status**: Production Ready  
+**Version**: 1.0.0  
+**Network**: Solana  
+**Token**: QWAMI
+
+Built with 💜 for the KWAMI community
