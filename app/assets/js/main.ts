@@ -1,6 +1,8 @@
 // QWAMI Token - Main client-side logic
 console.log('☀️ QWAMI Token - Initializing...');
 
+import { QwamiBlob } from './blob';
+
 // Tailwind -500 colors for color palettes (16 sections)
 const tailwindColors500 = [
   '#8B5CF6', // violet-500 (QWAMI primary)
@@ -185,6 +187,7 @@ class ScrollManager {
   private root: HTMLElement;
   private sidebarNav: SidebarNavigator;
   private cursorLight: CursorLight;
+  private blob: QwamiBlob | null = null;
 
   constructor() {
     this.sections = document.querySelectorAll('.text-section');
@@ -193,9 +196,21 @@ class ScrollManager {
     this.sidebarNav = new SidebarNavigator(this.sections.length);
     this.cursorLight = new CursorLight();
     
+    // Initialize blob visualization
+    this.initBlob();
+    
     this.init();
     window.addEventListener('scroll', this.handleScroll.bind(this));
     this.handleScroll(); // Initial call
+  }
+
+  private initBlob() {
+    try {
+      this.blob = new QwamiBlob('kwami-container');
+      console.log('✨ QWAMI Blob initialized');
+    } catch (error) {
+      console.error('Failed to initialize blob:', error);
+    }
   }
 
   public getCurrentSection(): number {
@@ -210,6 +225,9 @@ class ScrollManager {
     // Set initial colors for section 0
     this.updateColors(0);
     this.cursorLight.updateColors(colorPalettes[0]);
+    if (this.blob) {
+      this.blob.updateColors(colorPalettes[0]);
+    }
   }
 
   private handleScroll() {
@@ -231,6 +249,9 @@ class ScrollManager {
       const palette = colorPalettes[section % colorPalettes.length];
       this.updateColors(section);
       this.cursorLight.updateColors(palette);
+      if (this.blob) {
+        this.blob.updateColors(palette);
+      }
     }
   }
 

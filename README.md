@@ -117,7 +117,7 @@ qwami/
 
 ### Visual Style
 
-- **Animated blob visualization** (inspired by kwami.io)
+- **Animated 3D blob visualization** (Three.js, inspired by kwami.io) ✅
 - **Smooth scroll transitions** between sections
 - **Dynamic color palettes** per section
 - **Interactive sidebar navigation** with spheres
