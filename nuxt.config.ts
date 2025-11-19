@@ -1,17 +1,28 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
-  
+
   devtools: { enabled: true },
-  
+
   // Development server configuration
   devServer: {
-    port: 3001
+    port: 4444
   },
-  
+
   // SPA mode (no SSR)
   ssr: false,
-  
+
+  // Custom directory structure
+  dir: {
+    pages: 'app/pages',
+    layouts: 'app/layouts',
+    public: 'public'
+  },
+
+  // Point to custom app.vue location
+  srcDir: './',
+  rootDir: './',
+
   // App configuration
   app: {
     head: {
@@ -28,26 +39,26 @@ export default defineNuxtConfig({
       ]
     }
   },
-  
+
   // CSS configuration
   css: [
     '@/app/assets/css/main.css'
   ],
-  
+
   // TypeScript configuration
   typescript: {
     strict: true,
     typeCheck: true
   },
-  
+
   // Modules
   modules: [],
-  
+
   // Build configuration
   build: {
     transpile: []
   },
-  
+
   // Vite configuration
   vite: {
     build: {
