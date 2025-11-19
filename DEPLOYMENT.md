@@ -1,54 +1,75 @@
 # 🚀 QWAMI Deployment Guide
 
-This guide covers deploying the QWAMI informative landing page to production.
+This guide covers deploying the QWAMI token landing page (Nuxt 3 SPA) to production.
 
 ## Prerequisites
 
-- Node.js 18+ or Bun
+- Node.js 22+ (recommended for production)
 - Git
 - Domain name (qwami.io)
-- Hosting provider account (Vercel, Netlify, or custom)
+- Hosting provider account (Render, Vercel, or custom)
 
 ## Build for Production
 
 ### 1. Install Dependencies
 
 ```bash
-npm install  # or bun install
+npm install
 ```
 
 ### 2. Type Check
 
 ```bash
-npm run build:check  # or bun run build:check
+npm run typecheck
 ```
 
-This runs TypeScript compilation and then builds for production.
+This runs TypeScript compilation check.
 
 ### 3. Build
 
 ```bash
-npm run build  # or bun build
+npm run build
 ```
 
-Output will be in the `dist/` directory.
+Output will be in the `.output/` directory (Nuxt 3 SSR/SPA output).
 
 ### 4. Preview Locally
 
 ```bash
-npm run preview  # or bun preview
+npm run preview
 ```
 
-Visit http://localhost:4173 to test the production build.
+Visit http://localhost:3000 to test the production build.
 
 ## Deployment Options
 
-### Option 1: Vercel (Recommended)
+### Option 1: Render (Current Setup)
+
+**Configuration**: The project includes `render.yaml` for automatic deployment.
+
+**Important**: Ensure the Render dashboard uses the `render.yaml` configuration:
+- Build Command: `npm ci && npm run build`
+- Start Command: `node .output/server/index.mjs`
+- Node Version: 22.16.0
+
+**Steps:**
+
+1. Connect your GitHub repository to Render
+2. Render will automatically detect `render.yaml`
+3. Deploy from the `main` branch
+4. Verify the start command in dashboard matches: `node .output/server/index.mjs`
+
+**If deployment fails with "Cannot find module dist/index.js"**:
+- Go to Render Dashboard → Your Service → Settings
+- Clear any manual "Start Command" override
+- Save changes to use `render.yaml` configuration
+
+### Option 2: Vercel
 
 **Why Vercel?**
 - Automatic deployments from Git
 - Built-in CDN
-- Zero configuration for Vite
+- Zero configuration for Nuxt
 - Great performance
 
 **Steps:**
@@ -73,23 +94,9 @@ Visit http://localhost:4173 to test the production build.
    vercel --prod
    ```
 
-**Configuration** (optional `vercel.json`):
+**Note**: Vercel automatically detects Nuxt and configures correctly. No additional configuration needed.
 
-```json
-{
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "framework": "vite",
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ]
-}
-```
-
-### Option 2: Netlify
+### Option 3: Netlify
 
 **Steps:**
 
@@ -118,7 +125,7 @@ Visit http://localhost:4173 to test the production build.
 ```toml
 [build]
   command = "npm run build"
-  publish = "dist"
+  publish = ".output/public"
 
 [[redirects]]
   from = "/*"
@@ -126,37 +133,35 @@ Visit http://localhost:4173 to test the production build.
   status = 200
 ```
 
-### Option 3: GitHub Pages
+**Note**: For Nuxt SPA mode, Netlify will serve from `.output/public` directory.
+
+### Option 4: Custom Node.js Server
 
 **Steps:**
 
-1. **Install gh-pages**
+1. Build the project:
    ```bash
-   npm install -D gh-pages
+   npm run build
    ```
 
-2. **Add deploy script to package.json**
-   ```json
-   {
-     "scripts": {
-       "deploy": "npm run build && gh-pages -d dist"
-     }
-   }
-   ```
+2. Copy `.output` directory to your server
 
-3. **Deploy**
+3. Start the Node.js server:
    ```bash
-   npm run deploy
+   node .output/server/index.mjs
    ```
 
-4. **Configure GitHub Pages**
-   - Go to repository Settings > Pages
-   - Source: Deploy from gh-pages branch
-   - Custom domain: qwami.io
+4. Use PM2 for process management:
+   ```bash
+   npm install -g pm2
+   pm2 start .output/server/index.mjs --name qwami
+   pm2 save
+   pm2 startup
+   ```
 
-### Option 4: Custom Server (nginx)
+### Option 5: Static Hosting (nginx reverse proxy)
 
-**nginx Configuration**:
+**nginx Configuration** (Reverse Proxy):
 
 ```nginx
 server {
@@ -164,24 +169,22 @@ server {
     listen [::]:80;
     server_name qwami.io www.qwami.io;
 
-    root /var/www/qwami.io/dist;
-    index index.html;
+    location / {
+        proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
 
     # Gzip compression
     gzip on;
     gzip_vary on;
     gzip_types text/plain text/css text/xml text/javascript application/javascript application/json;
-
-    # Cache static assets
-    location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$ {
-        expires 1y;
-        add_header Cache-Control "public, immutable";
-    }
-
-    # SPA fallback
-    location / {
-        try_files $uri $uri/ /index.html;
-    }
 
     # Security headers
     add_header X-Frame-Options "SAMEORIGIN" always;
@@ -192,9 +195,10 @@ server {
 
 **Deploy Steps**:
 
-1. Build locally: `npm run build`
-2. Upload `dist/` to server: `rsync -avz dist/ user@server:/var/www/qwami.io/`
-3. Reload nginx: `sudo systemctl reload nginx`
+1. Build on server: `npm run build`
+2. Start with PM2: `pm2 start .output/server/index.mjs --name qwami`
+3. Configure nginx as reverse proxy
+4. Reload nginx: `sudo systemctl reload nginx`
 
 ## DNS Configuration
 
