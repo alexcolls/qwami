@@ -6,7 +6,7 @@
 
 ## Overview
 
-QWAMI is the native utility token that powers the KWAMI AI companion ecosystem. It enables NFT holders to recharge and enhance their KWAMI's capabilities through a burn-based deflationary model.
+QWAMI is the native utility and economic token that powers the KWAMI AI companion ecosystem. It enables NFT holders to recharge and enhance their KWAMI's capabilities while earning **weekly dividends every Friday** from ecosystem profits. The token uses a burn-based deflationary model and distributes 80% of all marketplace and minting revenues to holders.
 
 ## Core Utility
 
@@ -103,8 +103,9 @@ QWAMI is the native utility token that powers the KWAMI AI companion ecosystem. 
 ### Supply
 
 - **Maximum Supply**: 1,000,000,000,000 (1 Trillion)
-- **Decimals**: 9 (standard Solana token)
+- **Decimals**: 0 (Integer token - no fractional amounts)
 - **Initial Circulation**: TBD at launch
+- **Token Type**: Solana SPL Token
 
 ### Pricing
 
@@ -128,12 +129,74 @@ QWAMI is **deflationary** by design:
 2. **No token minting after initial supply**
 3. **Burn address is verifiable on-chain**
 4. **Total supply decreases over time**
+5. **Circulating supply reduction increases dividend per holder**
 
 **Burn Transparency**:
 - All burns sent to: `BURN_ADDRESS` (dead wallet)
 - Verifiable on Solana explorers
 - Real-time supply tracking
 - Burn statistics dashboard
+
+### Weekly Dividends System 💰
+
+**Every Friday**, QWAMI holders receive automatic dividend distributions from ecosystem profits.
+
+**Revenue Sources**:
+1. **market.kwami.io** - NFT marketplace trading commissions
+2. **candy.kwami.io** - New KWAMI NFT mint sales
+3. **Future Revenue**: API usage fees, premium features, partnerships
+
+**Distribution Model**:
+- **80%** of all profits → QWAMI holders (proportional to holdings)
+- **20%** of all profits → Protocol treasury
+
+**How It Works**:
+1. All ecosystem transactions flow to KWAMI's master program account
+2. Every Friday at 00:00 UTC, profits are calculated
+3. 80% is distributed proportionally to all QWAMI holders
+4. Distributions are automatic - no claiming required
+5. Dividends sent directly to holder wallets
+
+**Dividend Calculation**:
+```
+Your Dividend = (Your QWAMI Holdings / Total Circulating QWAMI) × (80% of Weekly Profits)
+```
+
+**Example**:
+- Weekly ecosystem profit: 10,000 SOL
+- Your QWAMI holdings: 100,000 QWAMI (0.01% of supply)
+- Your dividend: 0.01% × 8,000 SOL = 8 SOL
+
+### Staking System 🔒
+
+**Stake QWAMI for additional rewards** while maintaining dividend eligibility.
+
+**Key Features**:
+- ✅ **Staked tokens STILL receive Friday dividends**
+- ✅ **Earn additional staking APY on top of dividends**
+- ✅ **Multiple lock periods** (flexible, 30d, 90d, 180d, 365d)
+- ✅ **Higher APY for longer locks**
+- ✅ **Compound earnings automatically**
+
+**Staking Tiers**:
+| Lock Period | APY | Dividend Eligible |
+|-------------|-----|-------------------|
+| Flexible | 5% | ✅ Yes |
+| 30 days | 10% | ✅ Yes |
+| 90 days | 15% | ✅ Yes |
+| 180 days | 25% | ✅ Yes |
+| 365 days | 40% | ✅ Yes |
+
+**Dual Earning**:
+```
+Total Weekly Earnings = Dividends (80% of profits) + Staking Rewards (APY)
+```
+
+**Example**:
+- Holdings: 1,000,000 QWAMI staked for 365 days
+- Weekly dividend: 10 SOL (from 80% profit share)
+- Staking rewards: ~769 QWAMI per week (40% APY)
+- **Total earnings**: 10 SOL + 769 QWAMI per week
 
 ## Smart Contract
 
@@ -224,27 +287,37 @@ interface KwamiState {
 
 ### Q1 2025 - Launch
 - [ ] Token deployment on Solana mainnet
+- [ ] Weekly dividend system activation
+- [ ] Staking platform launch (5 tiers)
+- [ ] market.kwami.io revenue integration
+- [ ] candy.kwami.io revenue integration
 - [ ] Basic mint/burn interface
 - [ ] Integration with KWAMI NFTs
 - [ ] Initial liquidity pools
 
-### Q2 2025 - Governance
+### Q2 2025 - Governance & Growth
 - [ ] DAO activation
 - [ ] Agora forum launch
 - [ ] Proposal system
 - [ ] Voting mechanics
+- [ ] First dividend distributions
+- [ ] Marketplace trading fee optimization
 
 ### Q3 2025 - Expansion
-- [ ] DEX listings (Raydium, Orca)
-- [ ] Staking mechanisms
-- [ ] Advanced burn utilities
+- [ ] DEX listings (Raydium, Orca, Jupiter)
+- [ ] Advanced staking tiers
+- [ ] Compound staking features
 - [ ] Mobile wallet support
+- [ ] Additional revenue streams
+- [ ] Dividend dashboard analytics
 
 ### Q4 2025 - Advanced Features
 - [ ] Cross-chain bridges
 - [ ] Advanced metamorphosis features
 - [ ] Enterprise integrations
 - [ ] Community grants program
+- [ ] Automated dividend reinvestment
+- [ ] Premium API revenue sharing
 
 ## Purchase Methods
 
@@ -270,10 +343,12 @@ After launch:
 {
   "name": "QWAMI Token",
   "symbol": "QWAMI",
-  "decimals": 9,
+  "decimals": 0,
   "supply": 1000000000000,
   "network": "solana",
-  "standard": "SPL-Token"
+  "standard": "SPL-Token",
+  "type": "utility-economic",
+  "features": ["dividends", "staking", "burning", "governance"]
 }
 ```
 
@@ -312,11 +387,11 @@ After launch:
 **Q: What makes QWAMI different from other tokens?**  
 A: QWAMI has real utility - it's not just for trading. You burn it to power your AI companion's capabilities.
 
-**Q: Can I earn QWAMI without buying it?**  
-A: Future staking, community rewards, and DAO participation will offer earning opportunities.
+**Q: Can I earn income with QWAMI?**  
+A: Yes! QWAMI holders receive weekly dividends every Friday (80% of ecosystem profits), can stake for additional APY, and can participate in DAO rewards.
 
 **Q: Is QWAMI an investment?**  
-A: No. QWAMI is a utility token for using KWAMI services, not an investment vehicle.
+A: QWAMI is a utility and economic token. While it provides dividend income from ecosystem profits, it should not be considered a traditional investment. Participate responsibly.
 
 ### Technical
 
@@ -340,6 +415,26 @@ A: No. Energy, Connections, and Metamorphoses are bound to the specific NFT.
 **Q: What happens if my KWAMI runs out of Energy?**  
 A: It can still function with local features and models, but can't make API calls to cloud services.
 
+### Dividends & Staking
+
+**Q: When are dividends distributed?**  
+A: Every Friday at 00:00 UTC. Distributions are automatic and proportional to your holdings.
+
+**Q: What if I hold QWAMI in staking?**  
+A: Staked QWAMI still receives full Friday dividend distributions + staking APY rewards.
+
+**Q: How are dividends calculated?**  
+A: Your share = (Your QWAMI / Total Circulating QWAMI) × 80% of weekly profits from market.kwami.io and candy.kwami.io.
+
+**Q: What currency are dividends paid in?**  
+A: Dividends are paid in SOL (Solana's native currency).
+
+**Q: Can I reinvest dividends automatically?**  
+A: Automated dividend reinvestment will be available in Q4 2025.
+
+**Q: What's the minimum holding for dividends?**  
+A: Any amount of QWAMI qualifies for proportional dividends. Even 1 QWAMI earns dividends.
+
 ## Resources
 
 - **Website**: https://qwami.io
@@ -350,7 +445,7 @@ A: It can still function with local features and models, but can't make API call
 
 ## Disclaimer
 
-QWAMI is a utility token for the KWAMI ecosystem. It is not intended as an investment, security, or financial instrument. Token holders should not expect profits from the efforts of others. All QWAMI usage involves burning tokens for utility purposes. Participate responsibly and within your means.
+QWAMI is a utility and economic token for the KWAMI ecosystem. While it provides dividend distributions from ecosystem profits and staking rewards, it should not be considered a traditional investment or security. Dividend amounts depend on ecosystem performance and are not guaranteed. Token holders participate in ecosystem value but should not expect guaranteed returns. All QWAMI utility usage involves burning tokens permanently. Participate responsibly, understand the risks, and only invest what you can afford to lose.
 
 ---
 

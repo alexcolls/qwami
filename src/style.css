@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --section-count: 14;
+  --section-count: 16;
   --color-primary: #8B5CF6;  /* Purple */
   --color-secondary: #EC4899; /* Pink */
   --color-accent: #F59E0B;    /* Amber */
@@ -511,7 +511,7 @@ body {
   .content-left {
     width: 100%;
     height: auto;
-    min-height: calc(var(--section-count, 14) * 100vh);
+    min-height: calc(var(--section-count, 16) * 100vh);
     padding: 2rem;
     padding-bottom: 4rem;
     z-index: 50;

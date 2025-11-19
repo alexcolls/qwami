@@ -4,8 +4,12 @@ Interactive scrolling website for the QWAMI token - the native utility token tha
 
 ## 🎯 Overview
 
-QWAMI is the native KWAMI NFT token that enables holders to recharge and enhance their AI companion's capabilities across three core dimensions:
+QWAMI is the native KWAMI ecosystem token that powers AI companions and distributes **weekly dividends every Friday**. Holders can recharge KWAMI capabilities, stake for rewards, and earn passive income from marketplace and minting profits.
 
+### Core Features
+
+- 💰 **Weekly Dividends** - Earn 80% of ecosystem profits every Friday
+- 🔒 **Staking** - Stake for APY rewards while maintaining dividend eligibility
 - ⚡ **Energy** - Powers AI API calls (ElevenLabs, OpenAI) and DAO voting
 - 🔗 **Connections** - Expands app integration capacity (Instagram, WhatsApp, Gmail, etc.)
 - 🦋 **Metamorphosis** - Unlocks multiple KWAMI configurations (Mind, Soul, Body)
@@ -14,8 +18,11 @@ QWAMI is the native KWAMI NFT token that enables holders to recharge and enhance
 
 - **Price**: 1 QWAMI = $0.01 USD
 - **Max Supply**: 1,000,000,000,000 (1 Trillion)
-- **Network**: Solana
-- **Model**: Deflationary (burn-based utility)
+- **Decimals**: 0 (Integer token)
+- **Network**: Solana SPL
+- **Model**: Deflationary (burn-based) + Revenue sharing
+- **Dividends**: 80% of profits distributed weekly
+- **Revenue**: market.kwami.io + candy.kwami.io
 
 ## 🏗️ Tech Stack
 
@@ -82,7 +89,7 @@ qwami/
 
 ## 🎨 Features
 
-### Informative Sections (14 Sections)
+### Informative Sections (16 Sections)
 
 1. **Introduction** - Overview of QWAMI token
 2. **What is QWAMI** - Core concept and utility
@@ -90,14 +97,16 @@ qwami/
 4. **Connections** - App integration expansion
 5. **Metamorphosis** - Multiple KWAMI configurations
 6. **Tokenomics** - Supply, price, deflationary model
-7. **DAO Governance** - Community participation
-8. **How to Get QWAMI** - Purchase methods
-9. **Burning Mechanism** - Token destruction mechanics
-10. **KWAMI NFT Integration** - NFT synergy
-11. **Ecosystem** - Connected platforms
-12. **Security & Audits** - Code quality assurance
-13. **Roadmap** - Future development
-14. **Get Started** - CTA and documentation
+7. **Weekly Dividends** - 80% profit sharing every Friday
+8. **Staking** - APY rewards + dividend eligibility
+9. **DAO Governance** - Community participation
+10. **How to Get QWAMI** - Purchase methods
+11. **Burning Mechanism** - Token destruction mechanics
+12. **KWAMI NFT Integration** - NFT synergy
+13. **Ecosystem Revenue** - Marketplace and minting profits
+14. **Security & Audits** - Code quality assurance
+15. **Roadmap** - Future development
+16. **Get Started** - CTA and documentation
 
 ### Visual Style
 

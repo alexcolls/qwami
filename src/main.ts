@@ -2,7 +2,7 @@ import './style.css';
 
 console.log('🌕 QWAMI Token - Initializing...');
 
-// Tailwind -500 colors for color palettes (14 sections)
+// Tailwind -500 colors for color palettes (16 sections)
 const tailwindColors500 = [
   '#8B5CF6', // violet-500 (QWAMI primary)
   '#EC4899', // pink-500
@@ -18,6 +18,8 @@ const tailwindColors500 = [
   '#f43f5e', // rose-500
   '#f97316', // orange-500
   '#eab308', // yellow-500
+  '#84cc16', // lime-500
+  '#22c55e', // green-500
 ];
 
 // Helper function to blend two hex colors
@@ -263,7 +265,7 @@ const ACTION_ROUTES: Record<string, ActionConfig> = {
     message: 'Opening QWAMI...'
   },
   'learn-energy': {
-    url: 'https://github.com/alexcolls/kwami/blob/dev/docs/QWAMI_TOKEN.md',
+    url: 'https://github.com/alexcolls/kwami/blob/dev/docs/QWAMI_TOKEN.md#energy',
     message: 'Opening Energy docs...'
   },
   'expand-connections': {
@@ -273,6 +275,14 @@ const ACTION_ROUTES: Record<string, ActionConfig> = {
   'unlock-metamorphosis': {
     url: 'https://github.com/alexcolls/kwami/blob/dev/docs/QWAMI_TOKEN.md#metamorphosis',
     message: 'Opening Metamorphosis docs...'
+  },
+  'view-dividends': {
+    url: 'https://qwami.io/dividends',
+    message: 'Opening dividend dashboard...'
+  },
+  'start-staking': {
+    url: 'https://qwami.io/stake',
+    message: 'Opening staking interface...'
   },
   'join-dao': {
     url: 'https://qwami.io/dao',
@@ -354,14 +364,16 @@ window.addEventListener('scroll', () => {
 
 // Console message
 console.log(`
-  🌕 QWAMI Token - Fuel Your KWAMI
+  🌕 QWAMI Token - Fuel Your KWAMI & Earn Weekly Dividends
   
-  Energy ⚡ | Connections 🔗 | Metamorphosis 🦋
+  💰 Dividends: 80% of profits every Friday
+  🔒 Staking: Earn APY + Dividends
+  ⚡ Energy | 🔗 Connections | 🦋 Metamorphosis
   
-  1 QWAMI = $0.01 USD
-  Max Supply: 1 Trillion Tokens
-  Network: Solana
+  1 QWAMI = $0.01 USD | Max Supply: 1 Trillion
+  Decimals: 0 (Integer) | Network: Solana SPL
   
+  Revenue: market.kwami.io + candy.kwami.io
   Learn more at qwami.io
 `);
 
