@@ -207,7 +207,7 @@ dist/assets/index-mmAn1xOm.js    6.59 kB │ gzip: 2.52 kB
 
 ### Development
 ```bash
-npm run dev          # Start dev server (http://localhost:3000)
+npm run dev          # Start dev server (http://localhost:3001)
 ```
 
 ### Build

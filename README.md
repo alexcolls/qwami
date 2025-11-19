@@ -48,7 +48,7 @@ npm install  # or bun install
 npm run dev  # or bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000)
+Open [http://localhost:3001](http://localhost:3001)
 
 ### Build for Production
 

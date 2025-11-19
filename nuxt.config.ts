@@ -4,6 +4,11 @@ export default defineNuxtConfig({
   
   devtools: { enabled: true },
   
+  // Development server configuration
+  devServer: {
+    port: 3001
+  },
+  
   // SPA mode (no SSR)
   ssr: false,
   

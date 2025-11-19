@@ -33,7 +33,7 @@ Edit `.env` - you can leave placeholders for now, the app will degrade gracefull
 bun dev  # or npm run dev
 ```
 
-Visit [http://localhost:3000](http://localhost:3000)
+Visit [http://localhost:3001](http://localhost:3001)
 
 The app will load, but minting/burning won't work until you deploy the Anchor program.
 
