@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: qwami
+    runtime: node
+    buildCommand: npm ci && npm run build
+    startCommand: node .output/server/index.mjs
+    envVars:
+      - key: NODE_VERSION
+        value: 22.16.0
+      - key: NODE_ENV
+        value: production
+      - key: NITRO_PRESET
+        value: node-server
+
