@@ -1,0 +1,394 @@
+<template>
+  <div>
+    <!-- Sidebar Navigation -->
+    <nav id="sidebar-nav" class="sidebar-navigation">
+      <div class="sphere-container" id="sphere-container">
+        <!-- Spheres will be dynamically generated via TypeScript -->
+      </div>
+    </nav>
+
+    <!-- Custom cursor gradient light -->
+    <div id="cursor-light" />
+
+    <div id="app">
+      <!-- Left half: Animated text content -->
+      <div class="content-left">
+        <!-- Section 00: Introduction -->
+        <div class="text-section" data-section="0">
+          <div class="section-number animate-text">
+            <span class="section-hash">#</span>00
+          </div>
+          <h1 class="animate-text">
+            <span class="emoji">☀️</span> <span class="gradient-text">QWAMI Token</span>
+          </h1>
+          <p class="main-description animate-text delay-1">
+            The native utility token that powers your KWAMI AI companion. Recharge Energy, expand Connections, and unlock Metamorphosis possibilities.
+          </p>
+          <div class="section-action animate-text delay-2">
+            <button type="button" class="action-button" data-action-key="get-qwami">
+              💎 Get QWAMI
+            </button>
+          </div>
+        </div>
+
+        <!-- Section 01: What is QWAMI -->
+        <div class="text-section" data-section="1">
+          <div class="section-number animate-text">
+            <span class="section-hash">#</span>01
+          </div>
+          <h2 class="animate-text">
+            <span class="emoji">💫</span> <span class="gradient-text">What is QWAMI</span>
+          </h2>
+          <p class="main-description animate-text delay-1">
+            QWAMI is the native utility token for KWAMI NFT holders. It enables you to recharge and enhance your AI companion's capabilities across three core dimensions.
+          </p>
+          <p class="animate-text delay-2">
+            Built on Solana for fast, low-cost transactions. 1 QWAMI = $0.01 USD with a maximum supply of 1 TRILLION tokens.
+          </p>
+        </div>
+
+        <!-- Section 02: Energy -->
+        <div class="text-section" data-section="2">
+          <div class="section-number animate-text">
+            <span class="section-hash">#</span>02
+          </div>
+          <h2 class="animate-text">
+            <span class="emoji">⚡</span> <span class="gradient-text">Energy</span>
+          </h2>
+          <p class="main-description animate-text delay-1">
+            Energy fuels your KWAMI's AI API calls to providers like ElevenLabs and OpenAI. Without energy, your KWAMI can only use local functionality or local AI models.
+          </p>
+          <p class="animate-text delay-2">
+            Burn QWAMI to recharge your KWAMI's energy pool. Energy is also consumed when voting in the KWAMI DAO or posting proposals in the Agora forum.
+          </p>
+          <div class="section-action animate-text delay-3">
+            <button type="button" class="action-button" data-action-key="learn-energy">
+              ⚡ Learn About Energy
+            </button>
+          </div>
+        </div>
+
+        <!-- Section 03: Connections -->
+        <div class="text-section" data-section="3">
+          <div class="section-number animate-text">
+            <span class="section-hash">#</span>03
+          </div>
+          <h2 class="animate-text">
+            <span class="emoji">🔗</span> <span class="gradient-text">Connections</span>
+          </h2>
+          <p class="main-description animate-text delay-1">
+            Connections determine how many user app integrations your KWAMI can hold simultaneously - Instagram, WhatsApp, Gmail, Spotify, and more.
+          </p>
+          <p class="animate-text delay-2">
+            Start with a limited number of connections. Burn QWAMI to expand your KWAMI's connection capacity and integrate with more services.
+          </p>
+          <div class="section-action animate-text delay-3">
+            <button type="button" class="action-button" data-action-key="expand-connections">
+              🔗 Expand Connections
+            </button>
+          </div>
+        </div>
+
+        <!-- Section 04: Metamorphosis -->
+        <div class="text-section" data-section="4">
+          <div class="section-number animate-text">
+            <span class="section-hash">#</span>04
+          </div>
+          <h2 class="animate-text">
+            <span class="emoji">🦋</span> <span class="gradient-text">Metamorphosis</span>
+          </h2>
+          <p class="main-description animate-text delay-1">
+            Metamorphosis represents the number of distinct KWAMI configurations (Mind, Soul, and Body) that your NFT can save and switch between.
+          </p>
+          <p class="animate-text delay-2">
+            Create different personas with unique AI models, personalities, and visual styles. Burn QWAMI to unlock more metamorphosis slots.
+          </p>
+          <div class="section-action animate-text delay-3">
+            <button type="button" class="action-button" data-action-key="unlock-metamorphosis">
+              🦋 Unlock Metamorphosis
+            </button>
+          </div>
+        </div>
+
+        <!-- Section 05: Tokenomics -->
+        <div class="text-section" data-section="5">
+          <div class="section-number animate-text">
+            <span class="section-hash">#</span>05
+          </div>
+          <h2 class="animate-text">
+            <span class="emoji">📊</span> <span class="gradient-text">Tokenomics</span>
+          </h2>
+          <p class="main-description animate-text delay-1">
+            QWAMI operates on a deflationary burn model. Tokens are permanently removed when used for Energy, Connections, or Metamorphosis.
+          </p>
+          <p class="animate-text delay-2">
+            <strong>Price:</strong> 1 QWAMI = $0.01 USD<br>
+            <strong>Max Supply:</strong> 1,000,000,000,000 (1 Trillion)<br>
+            <strong>Decimals:</strong> 0 (Integer token)<br>
+            <strong>Network:</strong> Solana SPL
+          </p>
+        </div>
+
+        <!-- Section 06: Weekly Dividends -->
+        <div class="text-section" data-section="6">
+          <div class="section-number animate-text">
+            <span class="section-hash">#</span>06
+          </div>
+          <h2 class="animate-text">
+            <span class="emoji">💰</span> <span class="gradient-text">Weekly Dividends</span>
+          </h2>
+          <p class="main-description animate-text delay-1">
+            Every Friday, QWAMI holders receive 80% of all KWAMI ecosystem profits. Simply hold QWAMI to earn passive income.
+          </p>
+          <p class="animate-text delay-2">
+            <strong>Revenue Sources:</strong><br>
+            • market.kwami.io - Trading commissions from marketplace<br>
+            • candy.kwami.io - New NFT mint profits<br>
+            <strong>Distribution:</strong> 80% to QWAMI holders, 20% to protocol treasury
+          </p>
+          <div class="section-action animate-text delay-3">
+            <button type="button" class="action-button" data-action-key="view-dividends">
+              💸 View Dividends
+            </button>
+          </div>
+        </div>
+
+        <!-- Section 07: Staking -->
+        <div class="text-section" data-section="7">
+          <div class="section-number animate-text">
+            <span class="section-hash">#</span>07
+          </div>
+          <h2 class="animate-text">
+            <span class="emoji">🔒</span> <span class="gradient-text">Staking</span>
+          </h2>
+          <p class="main-description animate-text delay-1">
+            Stake your QWAMI tokens to earn additional rewards while maintaining your dividend eligibility. Locked staking periods offer higher APY.
+          </p>
+          <p class="animate-text delay-2">
+            Staked tokens are still eligible for weekly Friday dividends, giving you dual earning opportunities from the KWAMI ecosystem.
+          </p>
+          <div class="section-action animate-text delay-3">
+            <button type="button" class="action-button" data-action-key="start-staking">
+              🔒 Start Staking
+            </button>
+          </div>
+        </div>
+
+        <!-- Section 08: DAO Governance -->
+        <div class="text-section" data-section="8">
+          <div class="section-number animate-text">
+            <span class="section-hash">#</span>08
+          </div>
+          <h2 class="animate-text">
+            <span class="emoji">🏛️</span> <span class="gradient-text">DAO Governance</span>
+          </h2>
+          <p class="main-description animate-text delay-1">
+            Participate in the KWAMI DAO by burning QWAMI for voting power. Your voice shapes the future of the ecosystem.
+          </p>
+          <p class="animate-text delay-2">
+            Post proposals in the Agora forum (costs Energy), vote on community decisions, and help govern protocol upgrades and treasury allocation.
+          </p>
+          <div class="section-action animate-text delay-3">
+            <button type="button" class="action-button" data-action-key="join-dao">
+              🏛️ Join the DAO
+            </button>
+          </div>
+        </div>
+
+        <!-- Section 09: How to Get QWAMI -->
+        <div class="text-section" data-section="9">
+          <div class="section-number animate-text">
+            <span class="section-hash">#</span>09
+          </div>
+          <h2 class="animate-text">
+            <span class="emoji">💎</span> <span class="gradient-text">How to Get QWAMI</span>
+          </h2>
+          <p class="main-description animate-text delay-1">
+            Purchase QWAMI directly with SOL or USDC through our mint interface or on supported DEXs.
+          </p>
+          <p class="animate-text delay-2">
+            Connect your Phantom wallet, select the amount you want, and mint instantly. Start earning dividends every Friday!
+          </p>
+          <div class="section-action animate-text delay-3">
+            <button type="button" class="action-button" data-action-key="buy-qwami">
+              💎 Buy QWAMI
+            </button>
+          </div>
+        </div>
+
+        <!-- Section 10: Burning Mechanism -->
+        <div class="text-section" data-section="10">
+          <div class="section-number animate-text">
+            <span class="section-hash">#</span>10
+          </div>
+          <h2 class="animate-text">
+            <span class="emoji">🔥</span> <span class="gradient-text">Burning Mechanism</span>
+          </h2>
+          <p class="main-description animate-text delay-1">
+            All QWAMI utility usage involves burning - permanently destroying tokens. This deflationary mechanism increases scarcity and value over time.
+          </p>
+          <p class="animate-text delay-2">
+            Burn costs are transparent and denominated in QWAMI integers. Once burned, tokens are sent to a verifiable burn address and can never be recovered.
+          </p>
+        </div>
+
+        <!-- Section 11: KWAMI NFT Integration -->
+        <div class="text-section" data-section="11">
+          <div class="section-number animate-text">
+            <span class="section-hash">#</span>11
+          </div>
+          <h2 class="animate-text">
+            <span class="emoji">🎨</span> <span class="gradient-text">KWAMI NFT Integration</span>
+          </h2>
+          <p class="main-description animate-text delay-1">
+            QWAMI works seamlessly with your KWAMI NFT. Each NFT tracks its Energy, Connection, and Metamorphosis levels on-chain.
+          </p>
+          <p class="animate-text delay-2">
+            Mint your KWAMI NFT at candy.kwami.io, then use QWAMI to supercharge its capabilities while earning dividends.
+          </p>
+          <div class="section-action animate-text delay-3">
+            <button type="button" class="action-button" data-action-key="mint-kwami">
+              🍬 Mint KWAMI NFT
+            </button>
+          </div>
+        </div>
+
+        <!-- Section 12: Ecosystem Revenue -->
+        <div class="text-section" data-section="12">
+          <div class="section-number animate-text">
+            <span class="section-hash">#</span>12
+          </div>
+          <h2 class="animate-text">
+            <span class="emoji">🌐</span> <span class="gradient-text">Ecosystem Revenue</span>
+          </h2>
+          <p class="main-description animate-text delay-1">
+            QWAMI captures value from the entire KWAMI ecosystem. All profits flow to the master program account and are distributed to holders.
+          </p>
+          <p class="animate-text delay-2">
+            <strong>Revenue Streams:</strong><br>
+            • market.kwami.io - NFT marketplace trading fees<br>
+            • candy.kwami.io - New NFT minting profits<br>
+            • Future: API usage, premium features, partnerships
+          </p>
+        </div>
+
+        <!-- Section 13: Security & Audits -->
+        <div class="text-section" data-section="13">
+          <div class="section-number animate-text">
+            <span class="section-hash">#</span>13
+          </div>
+          <h2 class="animate-text">
+            <span class="emoji">🔐</span> <span class="gradient-text">Security & Audits</span>
+          </h2>
+          <p class="main-description animate-text delay-1">
+            Built with Anchor framework on Solana. Smart contracts undergo rigorous testing and security audits before mainnet deployment.
+          </p>
+          <p class="animate-text delay-2">
+            All code is open source and available for community review on GitHub. Master program account is multisig-protected.
+          </p>
+        </div>
+
+        <!-- Section 14: Roadmap -->
+        <div class="text-section" data-section="14">
+          <div class="section-number animate-text">
+            <span class="section-hash">#</span>14
+          </div>
+          <h2 class="animate-text">
+            <span class="emoji">🗺️</span> <span class="gradient-text">Roadmap</span>
+          </h2>
+          <p class="main-description animate-text delay-1">
+            <strong>Q1 2025:</strong> Token launch, weekly dividends, staking<br>
+            <strong>Q2 2025:</strong> DAO governance, marketplace revenue share<br>
+            <strong>Q3 2025:</strong> DEX listings, advanced staking tiers<br>
+            <strong>Q4 2025:</strong> Cross-chain bridges, expanded revenue streams
+          </p>
+        </div>
+
+        <!-- Section 15: Get Started -->
+        <div class="text-section" data-section="15">
+          <div class="section-number animate-text">
+            <span class="section-hash">#</span>15
+          </div>
+          <h2 class="animate-text">
+            <span class="emoji">🚀</span> <span class="gradient-text">Get Started</span>
+          </h2>
+          <p class="main-description animate-text delay-1">
+            Ready to earn dividends every Friday? Connect your wallet and start building your QWAMI position today.
+          </p>
+          <div class="section-action animate-text delay-2">
+            <button type="button" class="action-button" data-action-key="connect-wallet">
+              🚀 Connect Wallet
+            </button>
+            <button type="button" class="action-button" data-action-key="read-docs">
+              📚 Read Docs
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right half: Real Kwami Blob -->
+      <div class="content-right">
+        <!-- Header with links -->
+        <div class="right-header">
+          <a href="https://kwami.io" target="_blank" class="header-btn" title="KWAMI Framework">
+            👻
+          </a>
+          <a href="https://candy.kwami.io" target="_blank" class="header-btn" title="Mint KWAMI NFT">
+            <span class="candy-emoji">🍬</span>
+          </a>
+          <a href="https://github.com/alexcolls/kwami" target="_blank" class="header-btn" title="GitHub">
+            ⭐
+          </a>
+        </div>
+        
+        <div id="kwami-container" />
+        <a href="/" class="kwami-label">
+          <span>☀️</span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 296 70.2" preserveAspectRatio="xMinYMid meet" class="kwami-logo-svg">
+            <defs>
+              <linearGradient id="qwami-logo-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#8B5CF6" stop-opacity="1" />
+                <stop offset="25%" stop-color="#EC4899" stop-opacity="1" />
+                <stop offset="50%" stop-color="#F59E0B" stop-opacity="1" />
+                <stop offset="75%" stop-color="#10B981" stop-opacity="1" />
+                <stop offset="100%" stop-color="#8B5CF6" stop-opacity="1" />
+              </linearGradient>
+            </defs>
+            <text x="148" y="52" text-anchor="middle" font-family="'Orbitron', sans-serif" font-size="56" font-weight="700" letter-spacing="0.1em" fill="none" stroke="url(#qwami-logo-grad)" stroke-width="3">
+              QWAMI
+            </text>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+useHead({
+  title: 'QWAMI Token - Fuel Your KWAMI AI Companion',
+  meta: [
+    {
+      name: 'description',
+      content: 'QWAMI - The native KWAMI NFT token for recharging AI Energy, Connections, and Metamorphosis capabilities'
+    }
+  ]
+})
+
+// Client-side only initialization
+onMounted(async () => {
+  // Dynamically import the main logic on client side only
+  if (process.client) {
+    try {
+      const module = await import('../assets/js/main')
+      if (module && typeof module.default === 'function') {
+        module.default()
+      }
+      console.log('✨ QWAMI initialized')
+    } catch (error) {
+      console.error('Failed to initialize QWAMI:', error)
+    }
+  }
+})
+</script>
+

@@ -1,88 +1,53 @@
-import { fileURLToPath } from 'node:url';
-
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: [
-    '@nuxt/ui',
-    '@pinia/nuxt',
-    '@pinia-plugin-persistedstate/nuxt',
-    '@alexcolls/nuxt-ux',
-  ],
+  compatibilityDate: '2024-11-01',
   
-  ssr: false, // SPA mode
-
   devtools: { enabled: true },
-
-  css: ['~/assets/css/main.css'],
-
+  
+  // SPA mode (no SSR)
+  ssr: false,
+  
+  // App configuration
   app: {
     head: {
-      title: 'QWAMI Token - Mint & Burn',
+      charset: 'utf-8',
+      viewport: 'width=device-width, initial-scale=1',
+      title: 'QWAMI Token',
       meta: [
-        { charset: 'utf-8' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        {
-          name: 'description',
-          content: 'QWAMI is the utility token powering the Quami AI ecosystem on Solana. Mint and burn QWAMI tokens for AI services.',
-        },
+        { name: 'description', content: 'QWAMI - The native KWAMI NFT token for AI Energy, Connections, and Metamorphosis' }
       ],
       link: [
-        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
-        { rel: 'icon', type: 'image/png', href: '/favicon.png' },
-      ],
-    },
+        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
+        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap' }
+      ]
+    }
   },
-
-  runtimeConfig: {
-    // Server-side only
-    qwamiAuthorityPrivateKey: process.env.NUXT_QWAMI_AUTHORITY_PRIVATE_KEY || '',
-
-    // Public (client + server)
-    public: {
-      solanaNetwork: process.env.NUXT_PUBLIC_SOLANA_NETWORK || 'devnet',
-      rpcUrl: process.env.NUXT_PUBLIC_RPC_URL || 'https://api.devnet.solana.com',
-      qwamiTokenMint: process.env.NUXT_PUBLIC_QWAMI_TOKEN_MINT || '',
-      qwamiTokenProgramId: process.env.NUXT_PUBLIC_QWAMI_TOKEN_PROGRAM_ID || '',
-      qwamiTokenAuthority: process.env.NUXT_PUBLIC_QWAMI_TOKEN_AUTHORITY || '',
-      qwamiBasePriceUsd: parseFloat(process.env.NUXT_PUBLIC_QWAMI_BASE_PRICE_USD || '0.01'),
-      treasuryWallet: process.env.NUXT_PUBLIC_TREASURY_WALLET || '',
-      usdcMint: process.env.NUXT_PUBLIC_USDC_MINT || '',
-    },
+  
+  // CSS configuration
+  css: [
+    '@/app/assets/css/main.css'
+  ],
+  
+  // TypeScript configuration
+  typescript: {
+    strict: true,
+    typeCheck: true
   },
-
+  
+  // Modules
+  modules: [],
+  
+  // Build configuration
+  build: {
+    transpile: []
+  },
+  
+  // Vite configuration
   vite: {
-    define: {
-      global: 'globalThis',
-      'process.env': {},
-    },
-    resolve: {
-      alias: {
-        buffer: 'buffer/',
-        stream: 'stream-browserify',
-        util: 'util/',
-      },
-    },
-    optimizeDeps: {
-      include: ['buffer', '@solana/web3.js', '@solana/spl-token'],
-      esbuildOptions: {
-        define: {
-          global: 'globalThis',
-        },
-      },
-    },
-  },
+    build: {
+      target: 'es2020'
+    }
+  }
+})
 
-  colorMode: {
-    preference: 'dark',
-  },
-
-  ui: {
-    // Default dark theme
-  },
-
-  piniaPersistedstate: {
-    storage: 'localStorage',
-  },
-
-  compatibilityDate: '2025-11-05',
-});
