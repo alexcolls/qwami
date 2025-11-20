@@ -281,8 +281,8 @@ interface ActionConfig {
 
 const ACTION_ROUTES: Record<string, ActionConfig> = {
   'get-qwami': {
-    url: 'https://qwami.io',
-    message: 'Opening QWAMI...'
+    url: '/app',
+    message: 'Opening QWAMI app...'
   },
   'learn-energy': {
     url: 'https://github.com/alexcolls/kwami/blob/dev/docs/QWAMI_TOKEN.md#energy',
@@ -297,28 +297,28 @@ const ACTION_ROUTES: Record<string, ActionConfig> = {
     message: 'Opening Metamorphosis docs...'
   },
   'view-dividends': {
-    url: 'https://qwami.io/dividends',
-    message: 'Opening dividend dashboard...'
+    url: '/app',
+    message: 'Opening QWAMI app...'
   },
   'start-staking': {
-    url: 'https://qwami.io/stake',
-    message: 'Opening staking interface...'
+    url: '/app',
+    message: 'Opening QWAMI app...'
   },
   'join-dao': {
-    url: 'https://qwami.io/dao',
-    message: 'Opening DAO...'
+    url: '/app',
+    message: 'Opening QWAMI app...'
   },
   'buy-qwami': {
-    url: 'https://qwami.io',
-    message: 'Opening purchase interface...'
+    url: '/app',
+    message: 'Opening QWAMI app...'
   },
   'mint-kwami': {
     url: 'https://candy.kwami.io',
     message: 'Opening KWAMI Mint...'
   },
   'connect-wallet': {
-    url: 'https://qwami.io',
-    message: 'Connect your Phantom wallet...'
+    url: '/app',
+    message: 'Opening QWAMI app...'
   },
   'read-docs': {
     url: 'https://github.com/alexcolls/kwami/tree/dev/docs',
@@ -353,7 +353,13 @@ class ActionButtonManager {
     window.setTimeout(() => button.classList.remove('triggered'), 400);
 
     if (config.url) {
-      window.open(config.url, '_blank', 'noopener,noreferrer');
+      // Internal navigation for /app routes
+      if (config.url.startsWith('/')) {
+        window.location.href = config.url;
+      } else {
+        // External links open in new tab
+        window.open(config.url, '_blank', 'noopener,noreferrer');
+      }
     }
 
     console.log(`✨ ${config.message}`);
