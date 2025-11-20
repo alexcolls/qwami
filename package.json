@@ -14,8 +14,16 @@
     "typecheck": "nuxt typecheck"
   },
   "dependencies": {
+    "@pinia/nuxt": "^0.5.5",
+    "@solana/spl-token": "^0.4.9",
+    "@solana/wallet-adapter-base": "^0.9.23",
+    "@solana/wallet-adapter-wallets": "^0.19.37",
+    "@solana/web3.js": "^1.95.4",
+    "bs58": "^6.0.0",
     "kwami": "^1.4.1",
     "nuxt": "^3.14.0",
+    "pinia": "^2.2.7",
+    "solana-wallets-vue": "^0.7.1",
     "three": "^0.171.0",
     "vue": "^3.5.13"
   },

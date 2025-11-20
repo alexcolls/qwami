@@ -256,4 +256,13 @@ export class QwamiBlob {
   }
 }
 
+// Default export for easy initialization
+export default function initQwamiBlob(containerId: string = 'kwami-container'): QwamiBlob | null {
+  try {
+    return new QwamiBlob(containerId);
+  } catch (error) {
+    console.error('Failed to initialize QWAMI blob:', error);
+    return null;
+  }
+}
 

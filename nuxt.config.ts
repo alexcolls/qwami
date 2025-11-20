@@ -52,7 +52,7 @@ export default defineNuxtConfig({
   },
 
   // Modules
-  modules: [],
+  modules: ['@pinia/nuxt'],
 
   // Build configuration
   build: {
@@ -61,8 +61,53 @@ export default defineNuxtConfig({
 
   // Vite configuration
   vite: {
+    esbuild: {
+      target: 'esnext'
+    },
     build: {
-      target: 'es2020'
+      target: 'esnext'
+    },
+    optimizeDeps: {
+      include: ['@solana/web3.js', 'buffer'],
+      esbuildOptions: {
+        target: 'esnext'
+      }
+    },
+    define: {
+      'process.env.BROWSER': true
+    }
+  },
+
+  // Runtime configuration
+  runtimeConfig: {
+    // Private keys (server-side only)
+    qwamiAuthorityPrivateKey: process.env.NUXT_QWAMI_AUTHORITY_PRIVATE_KEY || 'PLACEHOLDER_BASE58_PRIVATE_KEY',
+    
+    // Public config (available on client)
+    public: {
+      // Solana network configuration
+      solanaNetwork: process.env.NUXT_PUBLIC_SOLANA_NETWORK || 'devnet',
+      solanaRpcEndpoint: process.env.NUXT_PUBLIC_SOLANA_RPC_ENDPOINT || 'https://api.devnet.solana.com',
+      
+      // QWAMI token configuration
+      qwamiTokenProgramId: process.env.NUXT_PUBLIC_QWAMI_TOKEN_PROGRAM_ID || 'PLACEHOLDER_PROGRAM_ID',
+      qwamiTokenMint: process.env.NUXT_PUBLIC_QWAMI_TOKEN_MINT || 'PLACEHOLDER_MINT_ADDRESS',
+      qwamiTokenAuthority: process.env.NUXT_PUBLIC_QWAMI_TOKEN_AUTHORITY || 'PLACEHOLDER_AUTHORITY_PUBKEY',
+      
+      // Token economics
+      qwamiBasePriceCents: parseInt(process.env.NUXT_PUBLIC_QWAMI_BASE_PRICE_CENTS || '1'),
+      solUsdPrice: parseFloat(process.env.NUXT_PUBLIC_SOL_USD_PRICE || '150'),
+      
+      // Feature flags
+      devnetSimulation: process.env.NUXT_PUBLIC_DEVNET_SIMULATION === 'true',
+      stakingEnabled: process.env.NUXT_PUBLIC_STAKING_ENABLED === 'true',
+      daoEnabled: process.env.NUXT_PUBLIC_DAO_ENABLED === 'true',
+      
+      // External links
+      kwamiWebsite: process.env.NUXT_PUBLIC_KWAMI_WEBSITE || 'https://kwami.io',
+      candyWebsite: process.env.NUXT_PUBLIC_CANDY_WEBSITE || 'https://candy.kwami.io',
+      marketWebsite: process.env.NUXT_PUBLIC_MARKET_WEBSITE || 'https://market.kwami.io',
+      githubUrl: process.env.NUXT_PUBLIC_GITHUB_URL || 'https://github.com/alexcolls/kwami',
     }
   }
 })
