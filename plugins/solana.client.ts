@@ -13,16 +13,11 @@ import { WalletAdapterNetwork } from '@solana/wallet-adapter-base'
 import {
   PhantomWalletAdapter,
   SolflareWalletAdapter,
-  SolletWalletAdapter,
   TorusWalletAdapter,
   LedgerWalletAdapter,
-  SlopeWalletAdapter,
-  BackpackWalletAdapter,
-  GlowWalletAdapter,
   CoinbaseWalletAdapter,
   MathWalletAdapter,
   TrustWalletAdapter,
-  ExodusWalletAdapter,
   BitpieWalletAdapter,
   Coin98WalletAdapter,
 } from '@solana/wallet-adapter-wallets'
@@ -39,13 +34,9 @@ export default defineNuxtPlugin((nuxtApp) => {
       // Popular wallets first
       new PhantomWalletAdapter(),
       new SolflareWalletAdapter({ network }),
-      new BackpackWalletAdapter(),
-      new GlowWalletAdapter(),
-      new SlopeWalletAdapter(),
       
       // Browser extension wallets
       new CoinbaseWalletAdapter(),
-      new ExodusWalletAdapter(),
       new TrustWalletAdapter(),
       new MathWalletAdapter(),
       new Coin98WalletAdapter(),
@@ -56,7 +47,6 @@ export default defineNuxtPlugin((nuxtApp) => {
       
       // Other wallets
       new TorusWalletAdapter(),
-      new SolletWalletAdapter({ network }),
     ],
     autoConnect: true,
   }

@@ -18,7 +18,7 @@ interface PurchaseRequest {
 export default defineEventHandler(async (event) => {
   try {
     const body = await readBody<PurchaseRequest>(event)
-    const { walletAddress, amount, paymentTxSignature } = body
+    const { walletAddress, amount } = body
 
     // Validation
     if (!walletAddress) {
@@ -58,7 +58,7 @@ export default defineEventHandler(async (event) => {
     }
 
     // Check if simulation mode
-    if (config.public.devnetSimulation === true || config.public.devnetSimulation === 'true') {
+    if (config.public.devnetSimulation === true) {
       // Simulate successful mint
       return {
         success: true,

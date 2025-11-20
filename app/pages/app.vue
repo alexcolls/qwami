@@ -119,7 +119,7 @@ onMounted(async () => {
   if (process.client) {
     try {
       // Dynamically import blob module
-      const blobModule = await import('../../assets/js/blob')
+      const blobModule = await import('~/app/assets/js/blob')
       if (blobModule && typeof blobModule.default === 'function') {
         blobModule.default('kwami-container-app')
       }

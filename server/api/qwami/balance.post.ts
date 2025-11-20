@@ -36,7 +36,7 @@ export default defineEventHandler(async (event) => {
     }
 
     // Check if simulation mode
-    if (config.public.devnetSimulation === true || config.public.devnetSimulation === 'true') {
+    if (config.public.devnetSimulation === true) {
       // Return simulated balance
       return {
         success: true,

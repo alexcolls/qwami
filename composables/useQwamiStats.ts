@@ -29,8 +29,8 @@ export const useQwamiStats = () => {
     // Features
     dividendPercentage: 80, // 80% to holders
     dividendDay: 'Friday',
-    stakingEnabled: config.public.stakingEnabled === true || config.public.stakingEnabled === 'true',
-    daoEnabled: config.public.daoEnabled === true || config.public.daoEnabled === 'true',
+    stakingEnabled: config.public.stakingEnabled === true,
+    daoEnabled: config.public.daoEnabled === true,
   }))
 
   /**
