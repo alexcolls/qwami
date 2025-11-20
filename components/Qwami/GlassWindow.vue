@@ -276,9 +276,9 @@ const handleBurn = async () => {
   }
 }
 
-const getBurnConversion = () => {
+const getBurnConversion = (): string => {
   const type = burnTypes.find(t => t.id === burnType.value)
-  if (!burnAmount.value) return ''
+  if (!type || !burnAmount.value) return ''
   
   const converted = type.convert(burnAmount.value)
   return `${converted} ${type.unit}`
