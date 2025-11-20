@@ -6,7 +6,7 @@
 
 import { Connection, PublicKey } from '@solana/web3.js'
 
-export default defineEventHandler(async (event) => {
+export default defineEventHandler(async () => {
   try {
     const config = useRuntimeConfig()
     const rpcEndpoint = config.public.solanaRpcEndpoint || 'https://api.devnet.solana.com'
@@ -32,11 +32,11 @@ export default defineEventHandler(async (event) => {
       
       // Features
       dividendsEnabled: true,
-      stakingEnabled: config.public.stakingEnabled === true || config.public.stakingEnabled === 'true',
-      daoEnabled: config.public.daoEnabled === true || config.public.daoEnabled === 'true',
+      stakingEnabled: config.public.stakingEnabled === true,
+      daoEnabled: config.public.daoEnabled === true,
       
       // Simulation mode
-      simulated: config.public.devnetSimulation === true || config.public.devnetSimulation === 'true',
+      simulated: config.public.devnetSimulation === true,
     }
 
     // If mint is configured and not in simulation mode, fetch on-chain data

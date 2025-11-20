@@ -53,7 +53,7 @@
     <div v-if="wallet.connected.value && activeTab === 'mint'" class="tab-content">
       <h3 class="tab-title">Mint QWAMI Tokens</h3>
       <p class="tab-description">
-        Purchase QWAMI tokens with SOL. 1 QWAMI = ${{ stats.tokenomics.basePrice }}
+        Purchase QWAMI tokens with SOL. 1 QWAMI = ${{ stats.tokenomics.value.basePrice }}
       </p>
 
       <div class="input-group">
@@ -161,11 +161,18 @@ const successMessage = ref('')
 
 // Computed
 const simulationMode = computed(() => {
-  return config.public.devnetSimulation === true || config.public.devnetSimulation === 'true'
+  return config.public.devnetSimulation === true
 })
 
 // Burn types
-const burnTypes = [
+const burnTypes: Array<{
+  id: 'energy' | 'connections' | 'metamorphosis'
+  emoji: string
+  label: string
+  min: number
+  convert: (amount: number) => number
+  unit: string
+}> = [
   {
     id: 'energy',
     emoji: '⚡',
@@ -242,17 +249,15 @@ const handleBurn = async () => {
   successMessage.value = ''
 
   try {
-    let signature: string
-
     switch (burnType.value) {
       case 'energy':
-        signature = await anchor.burnForEnergy(burnAmount.value)
+        await anchor.burnForEnergy(burnAmount.value)
         break
       case 'connections':
-        signature = await anchor.burnForConnections(burnAmount.value)
+        await anchor.burnForConnections(burnAmount.value)
         break
       case 'metamorphosis':
-        signature = await anchor.burnForMetamorphosis(burnAmount.value)
+        await anchor.burnForMetamorphosis(burnAmount.value)
         break
       default:
         throw new Error('Invalid burn type')

@@ -6,8 +6,7 @@
  */
 
 import { useWallet, useAnchorWallet } from 'solana-wallets-vue'
-import { Connection, PublicKey } from '@solana/web3.js'
-import { getAssociatedTokenAddress, getAccount } from '@solana/spl-token'
+import { Connection } from '@solana/web3.js'
 
 export const useQwamiWallet = () => {
   const wallet = useWallet()

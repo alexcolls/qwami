@@ -63,10 +63,9 @@ export const useAnchor = () => {
    * Burn QWAMI tokens for Energy
    * 
    * @param amount - Amount of QWAMI to burn
-   * @param kwamiNftMint - Public key of the KWAMI NFT to credit Energy to
    * @returns Transaction signature
    */
-  const burnForEnergy = async (amount: number, kwamiNftMint?: PublicKey): Promise<string> => {
+  const burnForEnergy = async (amount: number): Promise<string> => {
     if (!wallet.connected.value || !wallet.publicKey.value) {
       throw new Error('Wallet not connected')
     }
@@ -127,10 +126,9 @@ export const useAnchor = () => {
    * Burn QWAMI tokens for Connections
    * 
    * @param amount - Amount of QWAMI to burn
-   * @param kwamiNftMint - Public key of the KWAMI NFT to add connections to
    * @returns Transaction signature
    */
-  const burnForConnections = async (amount: number, kwamiNftMint?: PublicKey): Promise<string> => {
+  const burnForConnections = async (amount: number): Promise<string> => {
     if (!wallet.connected.value || !wallet.publicKey.value) {
       throw new Error('Wallet not connected')
     }
@@ -183,10 +181,9 @@ export const useAnchor = () => {
    * Burn QWAMI tokens for Metamorphosis
    * 
    * @param amount - Amount of QWAMI to burn
-   * @param kwamiNftMint - Public key of the KWAMI NFT to add metamorphosis slot to
    * @returns Transaction signature
    */
-  const burnForMetamorphosis = async (amount: number, kwamiNftMint?: PublicKey): Promise<string> => {
+  const burnForMetamorphosis = async (amount: number): Promise<string> => {
     if (!wallet.connected.value || !wallet.publicKey.value) {
       throw new Error('Wallet not connected')
     }
@@ -239,8 +236,7 @@ export const useAnchor = () => {
    * Check if devnet simulation mode is enabled
    */
   const isSimulationMode = (): boolean => {
-    return config.public.devnetSimulation === true || 
-           config.public.devnetSimulation === 'true'
+    return config.public.devnetSimulation === true
   }
 
   return {
