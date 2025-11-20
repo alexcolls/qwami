@@ -112,7 +112,7 @@
           v-model.number="burnAmount"
           type="number"
           class="token-input"
-          :placeholder="burnTypes.find(t => t.id === burnType)?.min || 100"
+          :placeholder="String(burnTypes.find(t => t.id === burnType)?.min || 100)"
           :min="burnTypes.find(t => t.id === burnType)?.min || 1"
         />
         <div class="input-hint">
